@@ -188,6 +188,17 @@ export default function PersonalityQuiz() {
   }
 
   // Calculate and show results
-  const result = isAiQuiz && aiResult ? aiResult : calculatePersonalityResult(answers);
-  return <QuizResult result={result} onRetakeQuiz={handleRetakeQuiz} isAiGenerated={isAiQuiz} />;
+  if (isAiQuiz) {
+    // For AI quiz, we must have an AI result
+    if (!aiResult) {
+      // If we don't have a result yet, show loading or go back to landing
+      setQuizState('landing');
+      return null;
+    }
+    return <QuizResult result={aiResult} onRetakeQuiz={handleRetakeQuiz} isAiGenerated={true} />;
+  }
+  
+  // For standard quiz, calculate result from static questions
+  const result = calculatePersonalityResult(answers);
+  return <QuizResult result={result} onRetakeQuiz={handleRetakeQuiz} isAiGenerated={false} />;
 }

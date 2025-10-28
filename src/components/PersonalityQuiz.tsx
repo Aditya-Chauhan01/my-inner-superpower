@@ -189,11 +189,28 @@ export default function PersonalityQuiz() {
 
   // Calculate and show results
   if (isAiQuiz) {
-    // For AI quiz, we must have an AI result
+    // For AI quiz, show loader until result is ready
     if (!aiResult) {
-      // If we don't have a result yet, show loading or go back to landing
-      setQuizState('landing');
-      return null;
+      return (
+        <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-quiz-primary/20 via-quiz-secondary/20 to-quiz-accent/20">
+          <div className="text-center space-y-6 animate-fade-in">
+            <div className="relative">
+              <div className="w-24 h-24 mx-auto">
+                <div className="absolute inset-0 rounded-full border-4 border-quiz-primary/30"></div>
+                <div className="absolute inset-0 rounded-full border-4 border-t-quiz-primary animate-spin"></div>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-quiz-primary to-quiz-secondary bg-clip-text text-transparent">
+                Finalizing your result...
+              </h2>
+              <p className="text-muted-foreground">
+                Hang tight while we generate your personalized analysis
+              </p>
+            </div>
+          </div>
+        </div>
+      );
     }
     return <QuizResult result={aiResult} onRetakeQuiz={handleRetakeQuiz} isAiGenerated={true} />;
   }

@@ -16,7 +16,8 @@ serve(async (req) => {
       throw new Error('LOVABLE_API_KEY is not configured');
     }
 
-    const { type } = await req.json();
+    const body = await req.json();
+    const type = body?.type;
     console.log('Generating AI quiz, type:', type);
 
     if (type === 'questions') {
@@ -77,7 +78,14 @@ serve(async (req) => {
       );
     } else if (type === 'result') {
       // Generate personality result
-      const { answers, questions } = await req.json();
+      const { answers, questions } = body as { answers: number[]; questions: any[] };
+
+      if (!Array.isArray(answers) || !Array.isArray(questions)) {
+        return new Response(
+          JSON.stringify({ error: 'Invalid payload: answers and questions are required arrays.' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
       
       // Calculate trait totals
       const totalTraits = {
@@ -91,10 +99,11 @@ serve(async (req) => {
 
       answers.forEach((answerIndex: number, questionIndex: number) => {
         const question = questions[questionIndex];
-        const selectedOption = question.options[answerIndex];
+        const selectedOption = question?.options?.[answerIndex];
+        if (!selectedOption) return; // skip invalid indices safely
         
         Object.keys(totalTraits).forEach(trait => {
-          totalTraits[trait as keyof typeof totalTraits] += selectedOption.traits[trait as keyof typeof selectedOption.traits];
+          totalTraits[trait as keyof typeof totalTraits] += selectedOption.traits[trait as keyof typeof selectedOption.traits] || 0;
         });
       });
 

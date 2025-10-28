@@ -3,13 +3,15 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PersonalityResult } from "@/data/quizData";
 import { useState } from "react";
+import { Sparkles } from "lucide-react";
 
 interface QuizResultProps {
   result: PersonalityResult;
   onRetakeQuiz: () => void;
+  isAiGenerated?: boolean;
 }
 
-export default function QuizResult({ result, onRetakeQuiz }: QuizResultProps) {
+export default function QuizResult({ result, onRetakeQuiz, isAiGenerated = false }: QuizResultProps) {
   const [showShareMessage, setShowShareMessage] = useState(false);
 
   const handleShare = () => {
@@ -45,6 +47,12 @@ export default function QuizResult({ result, onRetakeQuiz }: QuizResultProps) {
         <Card className="p-8 md:p-12 shadow-glow border-0 bg-white/90 backdrop-blur-sm mb-8">
           <div className="text-center mb-8">
             <div className="text-6xl mb-4">{result.icon}</div>
+            {isAiGenerated && (
+              <Badge className="bg-gradient-to-r from-quiz-accent to-quiz-warning text-white mb-3">
+                <Sparkles className="w-3 h-3 mr-1 inline" />
+                AI Generated Result
+              </Badge>
+            )}
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
               {result.title}
             </h2>

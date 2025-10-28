@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import heroImage from "@/assets/quiz-hero.jpg";
+import { Sparkles } from "lucide-react";
 
 interface QuizLandingProps {
   onStartQuiz: () => void;
+  onStartAiQuiz: () => void;
 }
 
-export default function QuizLanding({ onStartQuiz }: QuizLandingProps) {
+export default function QuizLanding({ onStartQuiz, onStartAiQuiz }: QuizLandingProps) {
   return (
     <div className="min-h-screen bg-gradient-subtle">
       {/* Hero Section */}
@@ -32,13 +34,23 @@ export default function QuizLanding({ onStartQuiz }: QuizLandingProps) {
             strengths, and areas for growth. Perfect for students ready to understand themselves better!
           </p>
           
-          <Button
-            onClick={onStartQuiz}
-            size="lg"
-            className="bg-white text-quiz-primary hover:bg-white/90 shadow-button transition-smooth text-lg px-8 py-6 rounded-xl font-semibold"
-          >
-            Start Your Journey 🚀
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              onClick={onStartQuiz}
+              size="lg"
+              className="bg-white text-quiz-primary hover:bg-white/90 shadow-button transition-smooth text-lg px-8 py-6 rounded-xl font-semibold"
+            >
+              Start Standard Quiz 🚀
+            </Button>
+            <Button
+              onClick={onStartAiQuiz}
+              size="lg"
+              className="bg-gradient-to-r from-quiz-accent to-quiz-warning text-white hover:opacity-90 shadow-button transition-smooth text-lg px-8 py-6 rounded-xl font-semibold flex items-center gap-2"
+            >
+              <Sparkles className="w-5 h-5" />
+              AI Generate Quiz ✨
+            </Button>
+          </div>
         </div>
       </div>
 

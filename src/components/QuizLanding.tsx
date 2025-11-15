@@ -11,13 +11,6 @@ interface QuizLandingProps {
 export default function QuizLanding({ onStartQuiz, onStartAiQuiz }: QuizLandingProps) {
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      {/* Header */}
-      <header className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-quiz-primary to-quiz-secondary bg-clip-text text-transparent">
-          ParsonaPath
-        </h1>
-      </header>
-
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0">

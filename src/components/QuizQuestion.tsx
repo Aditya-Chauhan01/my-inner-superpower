@@ -59,11 +59,11 @@ export default function QuizQuestion({
                 variant="outline"
                 className="w-full p-3 sm:p-6 text-left h-auto border-2 border-border hover:border-quiz-primary hover:scale-[1.02] sm:hover:scale-105 transition-smooth text-foreground hover:shadow-card group"
               >
-                <div className="flex items-start space-x-2 sm:space-x-4">
+                <div className="flex items-start space-x-2 sm:space-x-4 min-w-0">
                   <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-primary text-white flex items-center justify-center text-xs sm:text-sm font-semibold">
                     {String.fromCharCode(65 + index)}
                   </div>
-                  <span className="text-xs sm:text-base leading-relaxed flex-1 break-words">
+                  <span className="text-xs sm:text-base leading-relaxed flex-1 min-w-0 break-words overflow-wrap-anywhere">
                     {option.text}
                   </span>
                 </div>

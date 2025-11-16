@@ -1,21 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { QuizQuestion as QuizQuestionType } from "@/data/quizData";
-
-interface QuizQuestionProps {
-  question: QuizQuestionType;
-  currentQuestion: number;
-  totalQuestions: number;
-  onAnswer: (answerIndex: number) => void;
-}
 
 export default function QuizQuestion({ 
   question, 
   currentQuestion, 
   totalQuestions, 
   onAnswer 
-}: QuizQuestionProps) {
+}) {
   const progress = ((currentQuestion + 1) / totalQuestions) * 100;
 
   return (

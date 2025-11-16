@@ -3,12 +3,7 @@ import { Card } from "@/components/ui/card";
 import heroImage from "@/assets/quiz-hero.jpg";
 import { Sparkles } from "lucide-react";
 
-interface QuizLandingProps {
-  onStartQuiz: () => void;
-  onStartAiQuiz: () => void;
-}
-
-export default function QuizLanding({ onStartQuiz, onStartAiQuiz }: QuizLandingProps) {
+export default function QuizLanding({ onStartQuiz, onStartAiQuiz }) {
   return (
     <div className="min-h-screen bg-gradient-subtle">
       {/* Hero Section */}
@@ -77,35 +72,47 @@ export default function QuizLanding({ onStartQuiz, onStartAiQuiz }: QuizLandingP
           
           <Card className="p-6 sm:p-8 text-center shadow-card hover:shadow-glow transition-smooth border-0 bg-white/80 backdrop-blur-sm sm:col-span-2 md:col-span-1">
             <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-quiz-accent">🌟</div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-foreground">Growth Focused</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-foreground">Student-Focused</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Discover actionable ways to develop your skills and build on 
-              your natural strengths for personal growth.
+              Designed specifically for students, with relatable scenarios and 
+              actionable advice for personal growth.
             </p>
           </Card>
         </div>
       </div>
 
-      {/* What You'll Discover Section */}
-      <div className="bg-white/50 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
-            What You'll Discover About Yourself
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-            {[
-              { icon: "👑", title: "The Natural Leader", desc: "Born to inspire others" },
-              { icon: "💚", title: "The Caring Empath", desc: "Heart-centered connector" },
-              { icon: "🧠", title: "The Strategic Thinker", desc: "Analytical problem-solver" },
-              { icon: "🚀", title: "The Bold Risk-Taker", desc: "Adventurous innovator" },
-              { icon: "🤝", title: "The Reliable Supporter", desc: "Steady team player" }
-            ].map((type, index) => (
-              <div key={index} className="text-center p-6 rounded-xl bg-white shadow-card hover:shadow-glow transition-smooth">
-                <div className="text-3xl mb-3">{type.icon}</div>
-                <h3 className="font-semibold text-foreground mb-2">{type.title}</h3>
-                <p className="text-sm text-muted-foreground">{type.desc}</p>
-              </div>
-            ))}
+      {/* How It Works */}
+      <div className="container mx-auto px-4 py-12 sm:py-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-foreground mb-8 sm:mb-12">
+          How It Works
+        </h2>
+        <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 sm:gap-8">
+          <div className="text-center">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-primary text-white flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-3 sm:mb-4 shadow-button">
+              1
+            </div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-foreground">Answer Questions</h3>
+            <p className="text-muted-foreground">
+              Respond honestly to 18 carefully crafted questions about your preferences and behaviors
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-primary text-white flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-3 sm:mb-4 shadow-button">
+              2
+            </div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-foreground">Get Your Result</h3>
+            <p className="text-muted-foreground">
+              Receive an instant, detailed personality analysis based on your responses
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-primary text-white flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-3 sm:mb-4 shadow-button">
+              3
+            </div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-foreground">Grow & Share</h3>
+            <p className="text-muted-foreground">
+              Learn how to improve and share your results with friends
+            </p>
           </div>
         </div>
       </div>

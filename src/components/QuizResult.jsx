@@ -1,17 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PersonalityResult } from "@/data/quizData";
 import { useState } from "react";
 import { Sparkles } from "lucide-react";
 
-interface QuizResultProps {
-  result: PersonalityResult;
-  onRetakeQuiz: () => void;
-  isAiGenerated?: boolean;
-}
-
-export default function QuizResult({ result, onRetakeQuiz, isAiGenerated = false }: QuizResultProps) {
+export default function QuizResult({ result, onRetakeQuiz, isAiGenerated = false }) {
   const [showShareMessage, setShowShareMessage] = useState(false);
 
   const handleShare = () => {
@@ -102,45 +95,45 @@ export default function QuizResult({ result, onRetakeQuiz, isAiGenerated = false
             </div>
             <ul className="space-y-3">
               {result.strengths.map((strength, index) => (
-                <li key={index} className="flex items-start space-x-3">
-                  <div className="w-2 h-2 rounded-full bg-quiz-success mt-2 flex-shrink-0" />
-                  <span className="text-sm leading-relaxed text-foreground">{strength}</span>
+                <li key={index} className="flex items-start">
+                  <span className="text-quiz-success mr-2 flex-shrink-0">✓</span>
+                  <span className="text-foreground leading-relaxed">{strength}</span>
                 </li>
               ))}
             </ul>
           </Card>
 
-          {/* Areas to Watch */}
+          {/* Areas for Growth */}
           <Card className="p-6 shadow-card border-0 bg-white/80 backdrop-blur-sm">
             <div className="text-center mb-6">
               <div className="w-12 h-12 rounded-full bg-quiz-warning/10 text-quiz-warning flex items-center justify-center mx-auto mb-3 text-2xl">
-                ⚠️
+                🎯
               </div>
-              <h3 className="text-xl font-bold text-foreground">Areas to Watch</h3>
+              <h3 className="text-xl font-bold text-foreground">Areas to Develop</h3>
             </div>
             <ul className="space-y-3">
               {result.weaknesses.map((weakness, index) => (
-                <li key={index} className="flex items-start space-x-3">
-                  <div className="w-2 h-2 rounded-full bg-quiz-warning mt-2 flex-shrink-0" />
-                  <span className="text-sm leading-relaxed text-foreground">{weakness}</span>
+                <li key={index} className="flex items-start">
+                  <span className="text-quiz-warning mr-2 flex-shrink-0">→</span>
+                  <span className="text-foreground leading-relaxed">{weakness}</span>
                 </li>
               ))}
             </ul>
           </Card>
 
-          {/* Growth Tips */}
+          {/* How to Improve */}
           <Card className="p-6 shadow-card border-0 bg-white/80 backdrop-blur-sm">
             <div className="text-center mb-6">
-              <div className="w-12 h-12 rounded-full bg-quiz-primary/10 text-quiz-primary flex items-center justify-center mx-auto mb-3 text-2xl">
-                🌱
+              <div className="w-12 h-12 rounded-full bg-quiz-accent/10 text-quiz-accent flex items-center justify-center mx-auto mb-3 text-2xl">
+                🚀
               </div>
               <h3 className="text-xl font-bold text-foreground">Growth Tips</h3>
             </div>
             <ul className="space-y-3">
               {result.improvements.map((improvement, index) => (
-                <li key={index} className="flex items-start space-x-3">
-                  <div className="w-2 h-2 rounded-full bg-quiz-primary mt-2 flex-shrink-0" />
-                  <span className="text-sm leading-relaxed text-foreground">{improvement}</span>
+                <li key={index} className="flex items-start">
+                  <span className="text-quiz-accent mr-2 flex-shrink-0">★</span>
+                  <span className="text-foreground leading-relaxed">{improvement}</span>
                 </li>
               ))}
             </ul>
@@ -148,14 +141,10 @@ export default function QuizResult({ result, onRetakeQuiz, isAiGenerated = false
         </div>
 
         {/* Footer Message */}
-        <div className="text-center mt-12 p-6 rounded-xl bg-white/50 backdrop-blur-sm">
-          <p className="text-muted-foreground mb-4">
-            🌟 Remember, personality is just one piece of who you are. Use these insights 
-            as a starting point for self-discovery and growth!
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Want to learn more about yourself? Consider discussing these results with 
-            friends, family, or a mentor to gain even deeper insights.
+        <div className="text-center mt-12 px-4">
+          <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Remember, personality is complex and dynamic! Use these insights as a starting point for 
+            self-reflection and growth. Your unique combination of traits is what makes you special! 🌟
           </p>
         </div>
       </div>
